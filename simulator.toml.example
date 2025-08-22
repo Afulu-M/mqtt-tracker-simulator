@@ -1,0 +1,41 @@
+# MQTT Tracker Simulator Configuration
+
+[connection]
+iot_hub_host = vynd-dev-migration-iot.azure-devices.net
+device_id = SIM-001
+device_key_base64 = SRNM1369XBmTk1mnGVwcb12CN7/VefZPRktU2+Zm64M=
+
+[simulation]
+heartbeat_seconds = 60
+speed_limit_kph = 90.0
+start_lat = -26.2041
+start_lon = 28.0473
+start_alt = 1720.0
+
+[[route]]
+lat = -26.2041
+lon = 28.0473
+
+[[route]]
+lat = -26.2000
+lon = 28.0500
+
+[[route]]
+lat = -26.1950
+lon = 28.0520
+
+[[route]]
+lat = -26.1920
+lon = 28.0480
+
+[[geofences]]
+id = "office"
+lat = -26.2041
+lon = 28.0473
+radius_meters = 100.0
+
+[[geofences]]
+id = "warehouse"
+lat = -26.1920
+lon = 28.0480
+radius_meters = 150.0

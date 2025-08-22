@@ -1,0 +1,15 @@
+{
+  "modes": {
+    "default": "vehicle",
+    "shipMode": false
+  },
+  "ota": {
+    "configUpdates": true,
+    "firmwareUpdates": false
+  },
+  "reporting": {
+    "interval_moving": "5m",
+    "interval_stationary": "12h",
+    "roughHandlingThreshold": "0.4G"
+  }
+}

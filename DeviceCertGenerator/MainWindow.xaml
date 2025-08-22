@@ -1,0 +1,115 @@
+<Window x:Class="DeviceCertGenerator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Device Certificate Generator - Azure IoT Hub DPS" Height="600" Width="800"
+        WindowStartupLocation="CenterScreen">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <!-- Title -->
+        <TextBlock Grid.Row="0" Text="Device Certificate Generator for Azure IoT Hub DPS" 
+                   FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,20"/>
+        
+        <!-- Single IMEI Input -->
+        <GroupBox Grid.Row="1" Header="Single Device" Padding="10" Margin="0,0,0,10">
+            <StackPanel>
+                <TextBlock Text="Enter IMEI (14-16 digits):" Margin="0,0,0,5"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox x:Name="ImeiTextBox" Grid.Column="0" Height="30" Margin="0,0,10,0"
+                             VerticalContentAlignment="Center"/>
+                    <Button x:Name="ProcessSingleButton" Grid.Column="1" Content="Generate Certificate" 
+                            Height="30" Width="150" Click="ProcessSingleButton_Click"/>
+                </Grid>
+            </StackPanel>
+        </GroupBox>
+        
+        <!-- Batch Upload -->
+        <GroupBox Grid.Row="2" Header="Batch Upload" Padding="10" Margin="0,0,0,10">
+            <StackPanel>
+                <TextBlock Text="Upload CSV or XLSX file with IMEIs:" Margin="0,0,0,5"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox x:Name="FilePathTextBox" Grid.Column="0" Height="30" Margin="0,0,10,0"
+                             VerticalContentAlignment="Center" IsReadOnly="True"/>
+                    <Button x:Name="BrowseButton" Grid.Column="1" Content="Browse" 
+                            Height="30" Width="80" Margin="0,0,10,0" Click="BrowseButton_Click"/>
+                    <Button x:Name="ProcessBatchButton" Grid.Column="2" Content="Process Batch" 
+                            Height="30" Width="100" Click="ProcessBatchButton_Click"/>
+                </Grid>
+            </StackPanel>
+        </GroupBox>
+        
+        <!-- Configuration -->
+        <GroupBox Grid.Row="3" Header="Configuration" Padding="10" Margin="0,0,0,10">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0" Margin="0,0,10,0">
+                    <TextBlock Text="CA Certificate:" Margin="0,0,0,5"/>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBox x:Name="CaCertPathTextBox" Grid.Column="0" Height="30" Margin="0,0,5,0"
+                                 Text=".\cert\RootCA-Local.pem" VerticalContentAlignment="Center"/>
+                        <Button x:Name="BrowseCaCertButton" Grid.Column="1" Content="..." 
+                                Height="30" Width="30" Click="BrowseCaCertButton_Click"/>
+                    </Grid>
+                </StackPanel>
+                <StackPanel Grid.Column="1">
+                    <TextBlock Text="CA Private Key:" Margin="0,0,0,5"/>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBox x:Name="CaKeyPathTextBox" Grid.Column="0" Height="30" Margin="0,0,5,0"
+                                 Text=".\cert\RootCA-Local.key" VerticalContentAlignment="Center"/>
+                        <Button x:Name="BrowseCaKeyButton" Grid.Column="1" Content="..." 
+                                Height="30" Width="30" Click="BrowseCaKeyButton_Click"/>
+                    </Grid>
+                </StackPanel>
+            </Grid>
+        </GroupBox>
+        
+        <!-- Progress and Log -->
+        <GroupBox Grid.Row="4" Header="Progress and Log" Padding="10">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <ProgressBar x:Name="ProgressBar" Grid.Row="0" Height="20" Margin="0,0,0,10"/>
+                <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+                    <TextBox x:Name="LogTextBox" IsReadOnly="True" TextWrapping="Wrap" 
+                             VerticalAlignment="Stretch" AcceptsReturn="True"/>
+                </ScrollViewer>
+            </Grid>
+        </GroupBox>
+        
+        <!-- Status Bar -->
+        <StatusBar Grid.Row="5" Height="25">
+            <StatusBarItem>
+                <TextBlock x:Name="StatusTextBlock" Text="Ready"/>
+            </StatusBarItem>
+        </StatusBar>
+    </Grid>
+</Window>

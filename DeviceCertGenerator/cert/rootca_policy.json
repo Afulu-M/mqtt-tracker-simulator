@@ -1,0 +1,17 @@
+﻿{
+  "issuerParameters": { "name": "Self" },
+  "keyProperties": {
+    "exportable": true,
+    "keyType": "RSA",
+    "keySize": 2048,
+    "reuseKey": false
+  },
+  "secretProperties": { "contentType": "application/x-pkcs12" },
+  "x509CertificateProperties": {
+    "subject": "CN=RootCA-CA",
+    "validityInMonths": 60,
+    "ekus": [],
+    "keyUsage": ["cRLSign","keyCertSign"],
+    "basicConstraints": { "ca": true }
+  }
+}

@@ -1,0 +1,3 @@
+imei,device_dir,cert_pem,key_pem,chain_pem,outcome
+89612345678912,.\device\89612345678912,.\device\89612345678912\device.cert.pem,.\device\89612345678912\device.key.pem,.\device\89612345678912\device.chain.pem,ok
+123456789101112,.\device\123456789101112,.\device\123456789101112\device.cert.pem,.\device\123456789101112\device.key.pem,.\device\123456789101112\device.chain.pem,ok
